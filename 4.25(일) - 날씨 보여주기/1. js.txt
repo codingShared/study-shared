@@ -1,0 +1,107 @@
+const API_KEY = "ab7d4bf2d11bead5b1ed181922915064";
+const weatherSearch = document.querySelector('#weather-search');
+const info = document.querySelector('.info');
+const locationDisplay = document.querySelector('.location');
+const temperatureDisplay = document.querySelector('.temperature > span');
+const weatherDisplay = document.querySelector('.weather > img');
+const feelLikeDisplay = document.querySelector('.feel-like > span');
+const windDisplay = document.querySelector('.wind > span');
+
+
+window.onload = function(){
+    getWeather();
+}
+
+
+
+
+weatherSearch.addEventListener("keypress", (e)=>{
+
+    let keyword = weatherSearch.value;
+    if(e.keyCode === 13){
+      
+        switch(keyword){
+
+            case '서울' : 
+                getWeather('seoul');
+                weatherSearch.value = "";
+                break;
+
+            case '인천' : 
+                getWeather('incheon');
+                weatherSearch.value = "";
+                break;
+
+            case '대전' : 
+                getWeather('daejeon');
+                weatherSearch.value = "";
+                break;
+
+            case '대구' : 
+                getWeather('daegu');
+                weatherSearch.value = "";
+                break;
+
+            case '광주' : 
+                getWeather('gwangju');
+                weatherSearch.value = "";
+                break;
+
+            case '울산' : 
+                getWeather('ulsan');
+                weatherSearch.value = "";
+                break;    
+
+            case '김해' : 
+                getWeather('gimhae');
+                weatherSearch.value = "";
+                break;
+
+            case '부산' : 
+                getWeather('busan');
+                weatherSearch.value = "";
+                break;
+
+            case '마산' : 
+                getWeather('masan');
+                weatherSearch.value = "";
+                break;   
+
+            case '창원' : 
+                getWeather('changwon');
+                weatherSearch.value = "";
+                break;
+
+
+            default :
+                getWeather(keyword);
+                weatherSearch.value = "";
+                break;
+        
+        }
+       
+
+    } 
+})
+
+
+const getWeather = async (city='seoul') => {
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+    const response = await axios.get(url);
+    const { name, main, weather, wind } = response['data'];
+    locationDisplay.innerText = name;
+    temperatureDisplay.innerText = transferTemperature(main['temp']);
+    weatherDisplay.setAttribute('src', `https://openweathermap.org/img/wn/${weather[0]['icon']}.png`);
+    feelLikeDisplay.innerText = transferTemperature(main['feels_like']);
+    windDisplay.innerText = wind['speed'];
+    
+
+}
+
+
+const transferTemperature = (temp) => {
+    return (temp-273.15).toFixed(1);
+}
+
+
+

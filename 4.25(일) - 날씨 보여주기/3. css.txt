@@ -1,0 +1,100 @@
+*{
+    padding : 0;
+    margin : 0;
+}
+
+:root{
+    --primary : #3955bb;
+    --primaryColor : #fff;
+}
+
+html, body{
+    height : 100%;
+}
+
+.wrapper{
+    height : 100%;
+    overflow : hidden;
+}
+
+.header{
+    background : var(--primary);
+    color : var(--primaryColor);
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+    padding : 0.5rem 1rem;
+    height : 2rem;
+}
+
+.header h1{
+    font-size : 18px;
+}
+
+#weather-search{
+    
+    border-radius: 3px;
+    width : 150px;
+    height : 30px;
+    text-align : center;
+}
+
+.main-section{
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height : calc(100% - 2rem);
+
+}
+
+.info{
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.location{
+    font-size : 20px;
+    color : var(--primary);
+}
+
+.temperature{
+    font-size : 24px;
+
+}
+
+.temperature > span{
+    font-size : 56px;
+    margin-right : 0.3rem;
+}
+
+.weather{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather img{
+    max-width: 70px;
+}
+
+.details{
+    margin-top : 1rem;
+    font-size : 11px;
+    display : flex;
+}
+
+.details > span{
+    background : var(--primary);
+    color : var(--primaryColor);
+    margin-right : 10px;
+    padding : 0.1rem 0.3rem;
+    border-radius: 5px;
+}
+
+#spinner{
+    display : none;
+}
+
